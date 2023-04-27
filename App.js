@@ -2,12 +2,14 @@ import React, { useCallback, useEffect, useState } from 'react';
 import * as SplashScreen from 'expo-splash-screen';
 import Entypo from '@expo/vector-icons/Entypo';
 import * as Font from 'expo-font';
-import { Image, StatusBar, Text, View } from 'react-native';
+import { Image, StatusBar, Text, View, useColorScheme } from 'react-native';
 import { Ionicons } from '@expo/vector-icons'; 
 import { Asset } from 'expo-asset';
 import Tabs from './navigation/Tabs';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, DarkTheme, DefaultTheme, useTheme } from '@react-navigation/native';
 import { fab } from '@fortawesome/free-brands-svg-icons';
+import Stack from './navigation/Stack';
+import RootNav from './navigation/RootNav';
 
 
 
@@ -49,13 +51,15 @@ export default function App() {
       await SplashScreen.hideAsync();
     }
   }, [ready]);
+  const isDark = useColorScheme() === "dark"
   if (!ready) {
     return null;
   }
   return (
     <>
-      <NavigationContainer>
-        <Tabs />
+      <NavigationContainer theme={isDark ? DarkTheme : DefaultTheme}>
+        {/* <Stack /> */}
+        <RootNav />
         <StatusBar  />
       </NavigationContainer>
       {/* <View

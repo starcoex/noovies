@@ -9,7 +9,7 @@ export default function Coins() {
         flex: 1,
         justifyContent: 'flex-start',
         alignItems: 'center',
-        backgroundColor: '#1e272e',
+        // backgroundColor: '#1e272e',
       }}>
       <Text style={{ color: color.accent }}>Coins</Text>
     </View>

@@ -9,39 +9,18 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { useColorScheme } from 'react-native';
+import Stack from './Stack';
 
 
 const Tab = createBottomTabNavigator();
 
 export default function Tabs() {
   const isDark = useColorScheme() === "dark"
-  console.log(isDark)
+
   return (
-    <Tab.Navigator
-      screenOptions={{
-        tabBarStyle: {
-          backgroundColor: isDark ? colors.backgroundColor : "white",
-        },
-        tabBarActiveTintColor: isDark ? colors.accent : "#le272e",
-        tabBarInactiveTintColor: isDark ? colors.textColor : "#808e9b",
-        headerStyle: {
-          backgroundColor: isDark ? colors.backgroundColor : "white",
-          borderBottomWidth: 0,
-          borderWidth: 0,
-          shadowColor: "transparnet"
-        },
-        headerTitleStyle: {
-          fontSize: 18,
-          color: isDark ? colors.accent : "#le272e",
-        },
-        headerTintColor: colors.accent,
-        tabBarLabelStyle: {
-          marginTop: -5,
-          fontSize: 12,
-          fontWeight: 600
-        }
-      }}>
+    <Tab.Navigator >
       <Tab.Screen name='Home' component={Home} options={{
+        headerShown: false,
         tabBarIcon: ({ color, size }) => (<FontAwesome5 name="home" color={color} size={size} />)
       }} />
       <Tab.Screen name='Coins' component={Coins} options={{
