@@ -8,27 +8,31 @@ import colors from '../color/color';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { fab } from '@fortawesome/free-brands-svg-icons'
+import { useColorScheme } from 'react-native';
 
 
 const Tab = createBottomTabNavigator();
 
 export default function Tabs() {
+  const isDark = useColorScheme() === "dark"
+  console.log(isDark)
   return (
     <Tab.Navigator
       screenOptions={{
         tabBarStyle: {
-          backgroundColor: colors.backgroundColor
+          backgroundColor: isDark ? colors.backgroundColor : "white",
         },
-        tabBarActiveTintColor: colors.accent,
-        tabBarInactiveTintColor: colors.textColor,
+        tabBarActiveTintColor: isDark ? colors.accent : "#le272e",
+        tabBarInactiveTintColor: isDark ? colors.textColor : "#808e9b",
         headerStyle: {
-          backgroundColor: colors.backgroundColor,
+          backgroundColor: isDark ? colors.backgroundColor : "white",
           borderBottomWidth: 0,
           borderWidth: 0,
           shadowColor: "transparnet"
         },
         headerTitleStyle: {
           fontSize: 18,
+          color: isDark ? colors.accent : "#le272e",
         },
         headerTintColor: colors.accent,
         tabBarLabelStyle: {
